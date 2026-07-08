@@ -32,7 +32,7 @@ require_once __DIR__ . '/includes/header.php';
                 </div>
                 <div class="hero-stat">
                     <span class="hero-stat-value">100%</span>
-                    <span class="hero-stat-label">Foco em qualidade</span>
+                    <span class="hero-stat-label">Foco em solução</span>
                 </div>
                 <div class="hero-stat">
                     <span class="hero-stat-value">MG</span>
@@ -80,7 +80,7 @@ require_once __DIR__ . '/includes/header.php';
                 <p class="product-card-desc"><?= esc($product['desc']) ?></p>
                 <?php if (!empty($product['gallery'])): ?>
                 <span class="product-card-action">
-                    Ver <?= count($product['gallery']) ?> <?= count($product['gallery']) === 1 ? 'foto' : 'fotos' ?>
+                    Ver <?= count($product['gallery']) ?> produtos
                 </span>
                 <?php endif; ?>
             </button>

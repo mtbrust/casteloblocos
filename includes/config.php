@@ -27,6 +27,8 @@ function whatsapp_url(string $message = ''): string
     return 'https://wa.me/' . SITE_WHATSAPP_NUMBER . '?text=' . rawurlencode($message);
 }
 
+require_once __DIR__ . '/icons.php';
+
 $navLinks = [
     ['href' => 'inicio', 'label' => 'Início'],
     ['href' => 'produtos', 'label' => 'Produtos'],
@@ -48,6 +50,7 @@ $products = [
 
 $products = array_map(static function (array $product): array {
     $product['gallery'] = product_gallery($product['folder']);
+    $product['gallery'][] = product_custom_item($product['name']);
     $product['preview'] = $product['gallery'][0]['src'] ?? null;
 
     return $product;
@@ -203,4 +206,12 @@ function product_gallery(string $folderSlug): array
     return $gallery;
 }
 
-require_once __DIR__ . '/icons.php';
+/** @return array{alt: string, custom: true, whatsapp: string} */
+function product_custom_item(string $categoryName): array
+{
+    return [
+        'alt' => 'Personalizado',
+        'custom' => true,
+        'whatsapp' => whatsapp_url('Olá! Gostaria de um orçamento para produto personalizado em ' . $categoryName . '.'),
+    ];
+}
